@@ -4,4 +4,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ["notyf"],
   },
+  base: "/prefix-tw/",
 });
