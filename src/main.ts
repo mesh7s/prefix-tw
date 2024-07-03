@@ -57,7 +57,7 @@ const parser = new DOMParser();
 
 btn.onclick = () => {
   const prefix = prefixEl.value;
-  const ignore = ignoreEl.value.split(",").filter((i) => i);
+  const ignore = ignoreEl.value.split(" ").filter((i) => i);
   let val = editor.getValue();
   const parsed = parser.parseFromString(editor.getValue(), "text/html");
   const treeWalker = document.createTreeWalker(parsed);
