@@ -1,5 +1,5 @@
-import { Notyf } from "notyf";
 import "./style.css";
+import { Notyf } from "notyf";
 import hljs from "highlight.js";
 import { editor } from "./editor";
 
@@ -20,8 +20,18 @@ const codeContainer = getElById<HTMLDivElement>("codeContainer");
 ignoreEl.value = localStorage.getItem("ignore") ?? "";
 let resultHtml = "";
 
+if (!prefixEl.value.trim()) {
+  btn.disabled = true;
+}
+
 prefixEl.oninput = () => {
   localStorage.setItem("prefix", prefixEl.value);
+
+  if (!editor.getValue().trim() || !prefixEl.value.trim()) {
+    btn.disabled = true;
+  } else {
+    btn.disabled = false;
+  }
 };
 
 ignoreEl.oninput = () => {
@@ -31,7 +41,7 @@ ignoreEl.oninput = () => {
 editor.getModel()!.onDidChangeContent(() => {
   const value = editor.getValue();
 
-  if (value.trim().length > 0) {
+  if (value.trim().length > 0 && prefixEl.value.trim()) {
     if (btn.disabled) btn.disabled = false;
   } else if (!btn.disabled) {
     btn.disabled = true;
