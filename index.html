@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="business">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind Prefix</title>
+    <link rel="stylesheet" href="/node_modules/highlight.js/styles/base16/material-darker.min.css" />
+    <script type="module" src="src/setup.ts"></script>
+  </head>
+  <body>
+    <div class="navbar bg-base-300 justify-center">
+      <a class="btn btn-ghost text-xl" href="/">
+        <svg
+          class="w-6 h-6 text-gray-800 dark:text-white"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M11.782 5.72a4.773 4.773 0 0 0-4.8 4.173 3.43 3.43 0 0 1 2.741-1.687c1.689 0 2.974 1.972 3.758 2.587a5.733 5.733 0 0 0 5.382.935c2-.638 2.934-2.865 3.137-3.921-.969 1.379-2.44 2.207-4.259 1.231-1.253-.673-2.19-3.438-5.959-3.318ZM6.8 11.979A4.772 4.772 0 0 0 2 16.151a3.431 3.431 0 0 1 2.745-1.687c1.689 0 2.974 1.972 3.758 2.587a5.733 5.733 0 0 0 5.382.935c2-.638 2.933-2.865 3.137-3.921-.97 1.379-2.44 2.208-4.259 1.231-1.253-.673-2.19-3.443-5.963-3.317Z"
+          />
+        </svg>
+        PREFIXER
+      </a>
+    </div>
+    <div id="app" class="flex justify-center items-center flex-col max-w-7xl mx-auto p-8 gap-3">
+      <div class="flex justify-center items-center gap-3 w-[500px]">
+        <label
+          for="ignore"
+          class="input input-primary input-bordered h-auto block overflow-hidden rounded-md border px-3 py-2 shadow-sm"
+        >
+          <span class="text-xs font-medium text-gray-500">Prefix</span>
+
+          <input
+            type="text"
+            placeholder="tw-"
+            id="prefix"
+            class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+          />
+        </label>
+        <label
+          for="ignore"
+          class="input input-primary input-bordered h-auto block overflow-hidden rounded-md border px-3 py-2 shadow-sm"
+        >
+          <span class="text-xs font-medium text-gray-500">Ignore classes (use * to have a 'starts with' behavior)</span>
+
+          <input
+            type="text"
+            id="ignore"
+            placeholder="fa-,my-custom-class"
+            class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm"
+          />
+        </label>
+      </div>
+      <div class="divider"></div>
+      <div id="editorContainer" style="height: 24rem; width: 100%" class="shadow-md border border-base-200"></div>
+
+      <button id="convert" class="btn btn-primary my-4" type="button" onclick="convert()">Convert</button>
+      <div id="codeContainer" class="hidden relative w-full">
+        <div class="divider"></div>
+        <div id="copyIcon" class="absolute w-6 h-6 right-3 top-20 z-10 cursor-pointer">
+          <div class="tooltip tooltip-top" data-tip="Copy to clipboard">
+            <svg
+              class="text-accent"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M18 3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1V9a4 4 0 0 0-4-4h-3a1.99 1.99 0 0 0-1 .267V5a2 2 0 0 1 2-2h7Z"
+                clip-rule="evenodd"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M8 7.054V11H4.2a2 2 0 0 1 .281-.432l2.46-2.87A2 2 0 0 1 8 7.054ZM10 7v4a2 2 0 0 1-2 2H4v6a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </div>
+        </div>
+        <pre class="w-full relative shadow-md border border-base-200">
+          <code class="language-html whitespace-break-spaces" id="result">
+          </code>
+        </pre>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
