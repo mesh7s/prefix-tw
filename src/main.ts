@@ -73,8 +73,7 @@ btn.onclick = () => {
     }
 
     const newClasses = getPrefixedClasses(classes, ignore, prefix);
-
-    val = val.replaceAll(classes.value, newClasses.join(" "));
+    val = val.replaceAll(`class="${classes.value}"`, `class="${newClasses.join(" ")}"`);
     node = treeWalker.nextNode();
   }
 
